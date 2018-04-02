@@ -1,0 +1,50 @@
+<!--pages/index/index.wxml-->
+<!--轮播图  -->
+ <view class="swiper-container">  
+  <swiper autoplay="true" interval="{{interval}}" duration="{{duration}}" current="{{swiperCurrent}}"  bindchange="swiperChange" class="swiper">  
+    <block wx:for="{{banners}}" wx:key="id">  
+      <swiper-item>  
+        <image src="{{item.picUrl}}" class="img" bindtap='tapBanner' data-id='{{item.businessId}}'></image>  
+      </swiper-item>  
+    </block>  
+  </swiper>  
+   
+  <view class="dots">  
+    <block wx:for="{{banners}}" wx:key="unique">  
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>  
+    </block>  
+  </view>  
+</view>    
+<!--分类  -->
+<view class='type-contanier'>
+  <scroll-view scroll-x='true' class='type-navbar'>
+    <view class='type-box' wx:for-items='{{categories}}' wx:key='id'>
+      <view id="{{item.id}}" class='type-navbar-item {{activeCategoryId == item.id ? "type-item-on" :" "}}' bindtap='tapclick'>
+      {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<!--商品列表部分  -->
+<view class='goods-container'>
+    <view class='goods-list' wx:for-items='{{goods}}' wx: wx:key='index' data-id='{{item.id}}' bindtap='toDetail' >
+      <view class='goods-item'>
+        <image src='{{item.pic}}' mode='aspectFill' lazy-load='true'></image>
+        <text class='goods-title'>{{item.name}}</text>
+        <text class='goods-price'>￥{{item.minPrice}}</text>
+      </view>
+    </view>
+</view>
+<!--搜索框  -->
+<view class='search-container'>
+   <view class='search-bg'>
+    <image src='/images/search-pic.png'></image>
+    <input bindinput='listenerInput' confirm-type='搜索' bindconfirm='toSearch' placeholder='请输入搜索内容'></input>
+    <!--  
+      bindinput监听输入的数据 当键盘输入时，触发input事件，event.detail = {value, cursor}，处理函数可以直接 return 一个字符串，将替换输入框的内容。  
+      bindconfirm   点击'完成'按钮时触发，event.detail = {value: value}  
+      confirm-type设置键盘右下角按钮的文字    
+    -->
+    <button bindtap='toSearch'>搜索</button>
+   </view> 
+</view>

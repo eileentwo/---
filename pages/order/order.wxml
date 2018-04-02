@@ -1,0 +1,32 @@
+<!--pages/order/order.wxml-->
+<view class='container'>
+  <view class='type-contanier'>
+    <view class='type {{ index  == currentType ? "active" : "" }}' wx:for-items= '{{orderType}}' wx:key='{{index}}'> {{item}}
+      <text class='num {{ index  == currentType ? "show" : "" }}'></text>
+    </view>
+  </view>
+  <!-- <view class='no-order' hidden='{{orderList ? true :false}}'>
+    <image src='/images/nav/order-off.png'></image>
+    <view>暂无订单</view>
+  </view> -->
+  <view class='order-list' >
+    <view class='order-item'>
+      <view class='order-line order-time'>
+        <text>下单时间：{{}}</text>
+        <text class='red'>待付款</text>
+      </view>
+      <view class='order-line order-num'>
+        <text>订单号：{{}}</text>
+      </view>
+      <view class='order-line'>
+        <image class='order-img' src='{{}}'></image>
+      </view>
+      <view class='order-price'>
+        <text class='red'>合计：￥{{}}</text>
+        <button class='cancel'>取消订单</button>
+        <button class='pay red'>马上付款</button>
+      </view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,21 @@
+<!--pages/start/start.wxml-->
+
+<view class="container">
+  <image class='homeBack' src='/images/more/title8.png' mode='aspectFit'></image> 
+  <view class='content'>
+    <view class='homeTitle'>
+      <image class='userIcon' src='{{userInfo.avatarUrl}}'></image>  
+      <image class='wave' src='/images/more/wave.png'mode='aspectFit'></image>
+      <image class='wave wave-bg' src='/images/more/wave.png'mode='aspectFit'></image>
+    </view> 
+    <view class='homeInfo'>
+      <image class='smallTitle' src='/images/more/confirm-word1.png' mode='widthFix'></image>
+      <view class="btn" bindtap='goToIndex'>
+        <text>进入店铺</text>
+      </view>
+      <text class='copyRight'>@qingqing 贡献本页代码</text>
+    </view>  
+  </view>
+    
+</view>
+
