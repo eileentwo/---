@@ -30,6 +30,16 @@ Page({
   },
   onLoad: function (options) {
     const { id } = options;
+
+    wx.getStorage({
+      key: 'shopCartInfo',
+      success:(res)=> {
+        this.setData({
+          shopCarInfo: res.data,
+          shopNum: res.data.shopNum
+        })
+      },
+    })
     wx.request({
       url: 'https://api.it120.cc/' + app.globalData.subDomain + '/shop/goods/detail',
       data:{
@@ -76,6 +86,7 @@ Page({
       }
     })
   },
+  //评价信息
   reputation(goodsId){
     wx.request({
       // url: `https://api.it120.cc/tz/shop/goods/detail?id=` + goodsId,
@@ -94,8 +105,8 @@ Page({
   },
   // 去购物车
   goToCart(){
-    wx.navigateTo({
-      url: '/page/cart/cart'
+    wx.switchTab({
+      url: '/pages/cart/cart'
     })
   },
   //关闭遮罩层
@@ -236,7 +247,8 @@ Page({
       })
       return;
     }
-    let shopCartInfo = this.shopCartInfo();
+    let shopCartInfo = this.CartInfo();
+    // console.log(shopCartInfo)
     this.setData({
       shopCartInfo: shopCartInfo,
       shopNum: shopCartInfo.shopNum
@@ -245,7 +257,7 @@ Page({
     // 写入本地存储
     wx.setStorage({
       key: 'shopCartInfo',
-      data: 'shopCartInfo'
+      data: shopCartInfo
     })
     // 关闭弹层
     this.toHidden()
@@ -257,7 +269,7 @@ Page({
     })
   },
   // 组建购物车信息
-  shopCartInfo(){
+  CartInfo(){
     const basicInfo = this.data.goodsDetail.basicInfo
     let shopMap = {};
     // 获取数据的相关信息
@@ -269,8 +281,8 @@ Page({
     shopMap.logistics = this.data.goodsDetail.logistics;
 
     shopMap.price = this.data.selectSizePrice;
-    shopMap.curChildIds = this.data.curChildIds;
-    shopMap.curChildNames = this.data.curChildNames;
+    shopMap.propertyChildNames = this.data.propertyChildNames;
+    shopMap.propertyChildIds = this.data.propertyChildIds;
     shopMap.left = '';
     shopMap.active = true;
     shopMap.buyNum = this.data.buyNum;
@@ -294,6 +306,7 @@ Page({
       }
     }
     shopCarInfo.shopNum += this.data.buyNum
+
     if (hasSameGoodsIndex > -1) {
       shopCarInfo.shopList.splice(hasSameGoodsIndex, 1, shopMap);
     }else{
@@ -304,7 +317,6 @@ Page({
   },
   //当是立即购买时提交
   buyNow() {
-
     // 判断是否有选择商品信息
     if (this.data.goodsDetail.properties && !this.data.canSubmit) {
       if (!this.data.canSubmit) {
@@ -327,11 +339,11 @@ Page({
       return;
     }
     // this.isChoose()
-    let buyNowInfo = this.buyNowInfo()
+    let buyNowInfo = this.buyInfo()
     // 写入本地存储
     wx.setStorage({
       key: 'buyNowInfo',
-      data: 'buyNowInfo'
+      data: buyNowInfo
     })
     this.toHidden()
     wx.navigateTo({
@@ -339,7 +351,7 @@ Page({
     })
   },
   // 组建立即购买信息
-  buyNowInfo() {
+  buyInfo() {
 
     const basicInfo = this.data.goodsDetail.basicInfo
     let shopMap = {};
@@ -351,12 +363,13 @@ Page({
     shopMap.weight = basicInfo.weight;
     shopMap.logistics = this.data.goodsDetail.logistics;
 
+    shopMap.propertyChildNames = this.data.propertyChildNames;
+    shopMap.propertyChildIds = this.data.propertyChildIds;
     shopMap.price = this.data.selectSizePrice;
-    shopMap.curChildIds = this.data.curChildIds;
-    shopMap.curChildNames = this.data.curChildNames;
     shopMap.left = '';
     shopMap.active = true;
     shopMap.buyNum = this.data.buyNum;
+    
 
     let buyNowInfo ={}
     if(!buyNowInfo.shopNum){
@@ -365,7 +378,8 @@ Page({
     if (!buyNowInfo.shopList) {
       buyNowInfo.shopList = []
     }
-    buyNowInfo.shopList.push(this.data.shopMap)
+
+    buyNowInfo.shopList.push(shopMap)
     return buyNowInfo
   }
 })

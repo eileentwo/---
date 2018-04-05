@@ -70,7 +70,7 @@
     </view>
     <view class='cart' bindtap='goToCart'>
       
-      <view>(1)</view>
+      <view>({{shopNum}})</view>
       <text>购物车</text>
     </view>
     <view class='buy-cart' bindtap='toAddCar'>加入购物车</view>

@@ -1,0 +1,43 @@
+<!--pages/template-cart/template-cart.wxml-->
+<template name='no-goods'>  
+  <view class='title'>购物车空空如也</view>
+  <view class='index-btn'>去逛逛</view>
+</template>  
+
+ <template name='goods-list'>   
+  <view class='cart-title flex'>
+    <text>微商城</text>
+    <text class='gray' hidden='{{curHidden}}'>编辑</text>
+    <text class='gray' hidden='{{!curHidden}}'>完成</text>
+  </view>
+  <view class='cart-goods'>
+    <view  wx:for="{{goodsList}}" wx:key='index'>
+      <view class="goods-item flex  {{item.active? 'checked':'checkBox'}}" bindtap='select' data-index='{{index}}'>
+        <image src='{{item.pic}}'></image>
+        <view class='goodsInfo'>
+          <view class='goods-title'>{{item.name}}</view>
+          <view class='gray'>{{item.propertyChildNames}}</view>
+          <view class='flex'>
+            <text class='red'>￥{{item.price}}</text>
+            <view class='flex goods-btn'>
+              <text class='minus {{item.buyNum == 1 ? "bg-gray":""}}' catchtap='minus' data-index='{{index}}'>-</text>
+              <input value='{{item.buyNum}}'> </input>
+              <text class='plus {{item.buyNum == 10 ? "bg-gray":""}}' catchtap='plus' data-index='{{index}}'>+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='footer'>
+    <view class="total flex {{allSelect? 'checked':'checkBox'}} " bindtap='bindAllSelect'>
+    <!--{{allSelect? 'checked':'checkBox'}}  -->
+      <view>全选</view>
+      <view>
+        <text class='red'>合计：￥{{totalPrice}}</text>
+        <text class='submit'>去结算</text>
+      </view>
+    </view>
+  </view>
+ </template> 
+ 

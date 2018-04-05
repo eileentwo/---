@@ -1,66 +1,103 @@
 // pages/cart/cart.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    goodsList:{
+      list:[],
+      curHidden: true,
+      totalPrice:0,
+      allSelect:true,
+      noSelect:false
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onLoad: function () {
+    this.onShow();
+    // this.totalPrice();
+    // this.totalSelect()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  onShow() {
+    let shopCartInfo = wx.getStorageSync('shopCartInfo')
+    let shopList=[]
+    if (shopCartInfo.shopList && shopCartInfo){
+      shopList = shopCartInfo.shopList
+    }
+    this.setGoodsList(shopList, this.totalPrice(), this.totalSelect())
   },
+  // 设置商品列表
+  setGoodsList(list, totalPrice, allSelect){
+    this.setData({
+      list: list,
+      totalPrice: totalPrice,
+      allSelect: allSelect
+      // ,
+      // curHidden: curHidden,
+      // noSelect: noSelect
+    })
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  totalPrice(){
+    let list = this.data.goodsList
+    let total=0;
+    for (let i=0; i<list.length;i++){
+      let curItem = list[i];
+      if(curItem.active){
+        total += curItem.buyNum * curItem.price
+      }
+    }
+    return total
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  // 选择商品
+  select(e){
+    let index = e.currentTarget.dataset.index
+    let list = this.data.goodsList
+    if (index !== '' && index != null) {
+      list[index].active = !list[index].active
+      this.setGoodsList(list, this.totalPrice(), this.totalSelect())
+    }
+    
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  //是否全选
+  totalSelect(){
+    // console.log(this.data.goodsList)
+    let list = this.data.goodsList 
+    let allSelect=false
+    for (let i = 0; i < list.length;i++){
+      if (list[i].active){
+        allSelect = true;
+      }else{
+        allSelect = false;
+        break;
+      }
+    }
+    return allSelect
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  bindAllSelect(){
+    
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  // 减少数量
+  minus(e){
+    let index = e.currentTarget.dataset.index
+    let list = this.data.goodsList
+    if(index !=='' && index !=null){
+      if(list[index].buyNum>1){
+        list[index].buyNum--;
+        this.setData({
+          goodsList:list
+        })
+      }
+    }
+  },
+  // 增加数量
+  plus(e){
+    let index = e.currentTarget.dataset.index
+    let list =this.data.goodsList
+    if(index !=='' && index !=null){
+      if(list[index].buyNum <10){
+        list[index].buyNum++
+        this.setData({
+          goodsList: list
+        })
+      }
+    }
+    
   }
 })

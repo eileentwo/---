@@ -1,0 +1,123 @@
+/* pages/template-cart/template-cart.wxss */
+page{
+  background: #eee;
+}
+/*no goods  */
+.title{
+  font-size: 28rpx;
+  width: 100%;
+  height: 100rpx;
+  padding-top: 330rpx;
+  text-align: center;
+  color: #888;
+  background: url(https://cdn.it120.cc/images/weappshop/icon-cart.png) no-repeat center 200rpx;
+  background-size: 100rpx auto;
+}
+.index-btn {
+  display: flex;
+  justify-content: center;
+  width: 300rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  margin: 0 auto; 
+  background-color: #e64340;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+}
+.flex{
+  display: flex;
+  justify-content:  space-between;
+}
+.gray{
+  color: #888;
+}
+.red{
+  color: #e64340;
+}
+.bg-gray{
+  background-color: #eee;
+}
+.cart-title{
+  padding: 30rpx;
+  font-size:32rpx;
+}
+
+/*商品列表  */
+.cart-goods {
+  background-color: #fff;
+  padding: 0 0 100rpx 20rpx;
+}
+.cart-goods image {
+  width: 160rpx;
+  height: 160rpx;
+}
+.goods-item{
+  border-bottom: 1px solid #eee;
+  padding:30rpx 20rpx 20rpx 70rpx;
+}
+.checkBox {
+  background: url(https://cdn.it120.cc/images/weappshop/gou.png) no-repeat 0 center;
+  background-size: 40rpx auto;
+}
+.checked{ 
+  background: url(https://cdn.it120.cc/images/weappshop/gou-red.png) no-repeat 0 center;
+  background-size: 40rpx auto;
+}
+
+.goodsInfo {
+  width: 68%;
+  font-size: 26rpx;
+  line-height: 56rpx;
+}
+.goods-title {
+  font-size: 28rpx;
+}
+.goods-btn {
+  width: 180rpx;
+  text-align: center;
+}
+.goods-btn text {
+  display: inline-block;
+  width: 50rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border:  2rpx solid #ddd;
+  padding: 0 16rpx;
+}
+
+.goods-btn  .minus{
+  border-radius: 8rpx 0 0 8rpx;
+}
+.goods-btn .plus{
+  border-radius:0 8rpx 8rpx 0;
+}
+.goods-btn input {
+  font-size: 24rpx;
+  border:2rpx solid #ddd;
+  border-width: 2rpx 0;
+  height: 48rpx;
+  min-height: 48rpx;
+}
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: #fff;
+  font-size: 28rpx; 
+  padding:0 30rpx;
+}
+.total{
+  width: 88%;
+  padding-left: 60rpx;
+}
+.submit {
+  display: inline-block;
+  width: 240rpx;
+  text-align: center;
+  color: #fff;
+  background-color: #e64340;
+  margin-left: 30rpx;
+}

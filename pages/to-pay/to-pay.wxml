@@ -2,27 +2,27 @@
 <view class='container'>
   <form bindsubmit='createOrder' report-submit='true'>
     <view class='address-box box'>
-      <view class='add-address' hidden='{{hidden}}' bindtap='addAdress'>
+      <view class='add-address' hidden='{{curAddressData}}' bindtap='addAdress'>
         <view > 新增收货地址</view>
       </view>
-      <view class='show-address'  hidden='{{!hidden}}'>
-        <view class='consignee'>李 17005939434</view>
-        <view class='receiving-address'>前山路87号</view>
+      <view class='show-address'  hidden='{{!curAddressData}}' bindtap='selectAdress'>
+        <view class='consignee'>{{}}{{}}</view>
+        <view class='receiving-address'>{{}}</view>
       </view>
     </view>
 
-    <view class='goodList box'>
+    <view class='goodList box' wx:for-items="{{goodsList}}" wx:key='{{index}}'>
       <view class='goods-title'>商品列表</view>
-      <view class='goods-info'>
-        <image ></image>
+      <view class='goods-info' >
+        <image src='{{item.pic}}' ></image>
         <view class='goods-text'>
           <view class='flex arrow1'>
-            <text class='goods-name'>粉色毛衣</text>
-            <text class='goods-price'>￥85</text>
+            <text class='goods-name'>{{item.name}}</text>
+            <text class='goods-price'>￥{{item.price}}</text>
           </view>
           <view class='flex gray'>
-            <text class='goods-size'>尺码：40 颜色：卡其色</text>
-            <text class='goods-num'>x 1</text>
+            <text class='goods-size'>{{item.propertyChildNames}}</text>
+            <text class='goods-num'>x {{item.buyNum}}</text>
           </view>
         </view>
       </view>
@@ -40,7 +40,7 @@
     </view>
 
     <view class='submit'>
-      <text class='red'>合计：￥0</text>
+      <text class='red'>合计：￥{{totalPrice}}</text>
       <input value='提交订单'></input>
     </view>
 

@@ -8,6 +8,7 @@
     "pages/details/details",
     "pages/to-pay/to-pay",
     "pages/add-address/add-address",
+    "pages/template-cart/template-cart",
     "pages/order/order"
   ],
   "window":{
