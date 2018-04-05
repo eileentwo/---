@@ -1,0 +1,51 @@
+<!--pages/add-address/add-address.wxml-->
+<view class='contanier'>
+  <form  bindsubmit="bindSave">
+    <view class='address'>
+      <view class='laber-box flex '>
+        <view class='laber'>联系人</view>
+        <view class='laber-input'>
+          <input placeholder='姓名' value='{{address.linkMan}}{{wxaddress.uername}}'></input>
+        </view>
+      </view>
+      <view class='laber-box flex'>
+        <view class='laber'>手机号码</view>
+        <view class='laber-input'>
+          <input placeholder='11位手机号码'   maxlength='11'></input>
+        </view>
+      </view>
+      <view class='laber-box flex'>
+        <view class='laber'>选择地址</view>
+        <view class='laber-input flex'>
+          <picker bindchange='bindPickerProvinceChange' range='{{provinces}}'>
+            <view class="{{selProvince=='请选择'?'gray':''}}">{{selProvince}}</view>
+          </picker>
+          <picker bindchange='bindPickerCityChange' range='{{citys}}'>
+            <view class="{{selCity=='请选择'?'gray':''}}">{{selCity}}</view>
+          </picker>
+          <picker bindchange='bindPickerDistrictChange' range='{{districts}}'>
+            <view class="{{selDistrict=='请选择'?'gray':''}}">{{selDistrict}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class='laber-box flex'>
+        <view class='laber'>详细地址</view>
+        <view class='laber-input'>
+          <!-- <input placeholder='街道门牌信息'></input> -->
+        <textarea name="address" placeholder="街道门牌信息"  value="{{addressData.address}}{{wxaddress.detailInfo}}"/>
+        </view>
+      </view>
+      <view class='laber-box flex'>
+        <view class='laber'>邮政编码</view>
+        <view class='laber-input'>
+          <input  value="{{addressData.code}}{{wxaddress.postalCode}}"></input>
+        </view>
+      </view>
+    </view>
+    <button type='warn' formType='submit'>保存</button>
+    <button wx:if='{{!addressData}}'  type='primary' bindtap='readFromWx'>从微信读取</button>
+    <button type='default' bindtap='deleteAddress' wx:if='{{addressData}}' data-id='{{addressData.id}}'>删除该地址</button>
+    <button type='default' bindtap='bindCancel'>取消</button>
+  </form>
+
+</view>

@@ -1,0 +1,54 @@
+/* pages/add-address/add-address.wxss */
+page {
+  background-color:#eee; 
+}
+.address{
+  margin: 20rpx 0 30rpx;
+  background-color:#fff; 
+}
+.flex {
+  display: flex;
+  justify-content:  flex-start;
+}
+.gray{
+  color: #888;
+}
+
+.laber-box{
+  border-bottom: 1rpx solid #eee;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 80rpx; 
+}
+.laber {
+  width:180rpx;
+}
+.laber-input {
+  flex: 1;
+}
+.laber-input input,
+.laber-input textarea {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx; 
+}
+
+
+.laber-input textarea {
+    box-sizing: border-box;
+    overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 10rpx ; 
+}
+
+.laber-input picker {
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-right: 30rpx;
+}
+button {
+  margin-bottom:30rpx; 
+  width: 90%;
+}

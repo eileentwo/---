@@ -1,0 +1,114 @@
+/* pages/to-pay/to-pay.wxss */
+page{
+  background-color: #eee;
+}
+.contanier,
+form {
+  width: 100%;
+}
+.box {
+  padding-left: 30rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.address-box{
+  font-size: 28rpx;
+  background:#fff url(https://cdn.it120.cc/images/weappshop/addr-line.png)   no-repeat center bottom;
+  background-size: 100% auto;
+}
+.add-address {
+  width: 100%;
+  overflow: hidden;
+  background:url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 650rpx center;
+  background-size: 16rpx auto;
+}
+.add-address view {
+  float: left;
+  padding: 40rpx 0 40rpx 90rpx;
+  background: url("https://cdn.it120.cc/images/weappshop/ico-add-addr.png") no-repeat left center;
+  background-size: 60rpx auto;
+}
+.show-address {
+  padding-left: 100rpx;
+  background: url(https://cdn.it120.cc/images/weappshop/ico-addr.png) no-repeat 30rpx 35rpx,
+              url(https://cdn.it120.cc/images/weappshop/arrow-right.png) no-repeat 650rpx center;
+  background-size: 30rpx auto,16rpx auto;
+}
+.consignee {
+  padding: 30rpx 0 20rpx;
+
+}
+.receiving-address {
+  font-size: 24rpx;
+  padding-bottom:34rpx;
+  color: #888;
+}
+.goods-title {
+  font-size: 28rpx;
+  padding: 30rpx 0 30rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.goods-info {
+  padding: 30rpx 0;
+  overflow: hidden;
+}
+.goods-info image {
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+  background: #eee;
+  margin-right: 20rpx;
+}
+.goods-text{
+  float: left;
+  width: 70%;
+  font-size: 26rpx;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.arrow1 {
+  padding: 10rpx 0 70rpx;
+}
+
+.order {
+  font-size: 28rpx;
+  padding:0 30rpx;
+}
+.order view {
+  padding:30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+.order input{
+  font-size: 28rpx;
+  width: 80%;
+}
+.gray {
+  color: #888;
+}
+.submit {
+  font-size: 28rpx;
+   text-align: right; 
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.red {
+  color: #f00;
+}
+.submit .red {
+  vertical-align: middle;
+}
+.submit input {
+  display: inline-block; 
+  vertical-align: middle;
+  height: 100rpx;
+  width: 200rpx;
+  text-align: center;
+  background-color: #e64340;
+  color: #fff;
+  margin-left: 20rpx;
+}

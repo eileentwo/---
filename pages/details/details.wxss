@@ -4,6 +4,7 @@ page{
 }
 .container{
   height: 100%;
+  /* position: relative; */
 }
 .swiper-container,
 .swiper-container swiper,
@@ -83,11 +84,11 @@ page{
   width: 98%;
   background-color:#fff; 
   margin-bottom: 30rpx;
-  padding-bottom: 60rpx;
   font-size: 26rpx;
   color: #666;
-  padding:10rpx 1%;
+  padding:10rpx 1% 80rpx;
 }
+
 .goods-des image{
  width: 100%;
  height: 500rpx;
@@ -96,7 +97,7 @@ page{
 .goods-comment{
   width: 100%;
   background-color: #fff;
-  padding-bottom: 60rpx;
+  padding-bottom: 120rpx;
 }
 .goods-comment .goods-title{
  border-bottom: 2rpx solid #eee;
@@ -127,4 +128,177 @@ page{
 }
 .comment-item text {
   font-size: 24rpx;
+}
+
+/*底部购物栏  */
+.foot-box{
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  text-align: center;
+  font-size: 34rpx;
+  box-shadow:0 0 8rpx 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.contact {
+  width: 17%; 
+  height: 100%;
+  font-size: 20rpx;
+  line-height: 1;
+  position: relative;
+  overflow: hidden;
+  background: url("https://cdn.it120.cc/images/weappshop/kefu.png") no-repeat center 21rpx;
+  background-size: 55rpx auto;
+  color: #008000;
+}
+.cart {
+  width: 17%; 
+  height: 100%;
+  font-size: 20rpx;
+  position: relative;
+  overflow: hidden;
+  background: url("https://cdn.it120.cc/images/weappshop/cart.png") no-repeat center 21rpx;
+  background-size: 44rpx auto;
+  color: #acacb7;
+}
+.contact text {
+  display: inline-block;
+   padding-top: 64rpx; 
+}
+.cart text{
+  display: inline-block;
+   padding-top:24rpx; 
+
+}
+.cart view {
+  color: #e64340;
+  position: absolute;
+  top: -30rpx;
+  right: 20rpx;
+}
+.buy-cart{
+  width: 33%;
+  background-color: #ff6850;
+  color: #fff;
+}
+.buy-now{
+  width: 33%;
+  background-color: #e64340;
+  color: #fff;
+}
+
+/*弹出层  */
+.show-select,
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+.mask {
+   z-index: 6;
+   background: rgba(0, 0, 0, .5)
+}
+.select-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 7;
+  width: 100%;
+  background: #fff;
+  font-size: 26rpx;
+}
+.select-goods-info,
+.select-num-box  {
+  overflow: hidden;
+}
+.box-mode{
+  padding: 20rpx 20rpx 20rpx 0;
+  margin-left: 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.select-goods-info image {
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 40rpx;
+}
+.select-title-info {
+  float: left;
+  width: 480rpx;
+  line-height: 60rpx;
+}
+.close {
+  float: right;
+  width: 36rpx;
+  height: 36rpx;
+  background: url('https://cdn.it120.cc/images/weappshop/popup-close.png') no-repeat center center ;
+  background-size: 36rpx auto;
+   margin:-10rpx 0 0 -10rpx;  
+}
+.select-detail-box {
+  padding-bottom: 30rpx;
+}
+.select-detail {
+  padding-bottom: 30rpx;
+}
+.detail-item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+ }
+.detail-item view { 
+  padding: 14rpx 20rpx;
+  border: 2rpx solid #eee;
+  margin-right:20rpx; 
+  margin-bottom: 20rpx;
+}
+.detail-item .active {
+  color: #e64340;
+  border-color:#e64340;
+}
+.select-num-box {
+  padding: 30rpx 30rpx 48rpx 0;
+}
+.select-num-box view {
+  float: left;
+  vertical-align: middle;
+}
+.select-num-box .select-button{
+   float: right; 
+  display: flex;
+}
+.select-button view {
+ width:80rpx;
+ line-height: 64rpx;
+ height: 64rpx;
+ text-align: center;
+ border: 1rpx solid #eee;
+}
+
+.select-button input {
+  height: 100%;
+}
+.select-button .input {
+  border-width: 1rpx 0rpx;
+  font-size: 28rpx;
+}
+.gray {
+  background-color: #f5f5f9;
+}
+.show-join-btn {
+  color: #fff;
+  background-color: #e64340;
+  text-align: center;
+  font-size: 34rpx;
+  line-height: 89rpx;
+  height: 89rpx;
 }

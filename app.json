@@ -6,6 +6,8 @@
     "pages/user/user",
     "pages/logs/logs",
     "pages/details/details",
+    "pages/to-pay/to-pay",
+    "pages/add-address/add-address",
     "pages/order/order"
   ],
   "window":{

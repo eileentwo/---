@@ -28,22 +28,22 @@
       <text>分享有赏</text>
     </view>
   </view>
-  <view class='goods-select'>
+  <view class='goods-select' bindtap='toShow'>
     选择：尺码 颜色
     <image src='/images/arrow-right.png'></image>
   </view>
   <view class='goods-des'>
     <view class='goods-title'>商品介绍</view>
-    <view>
+    <view class='goods-des-images'>
        <text wx:if='{{desText}}'>{{desText}}</text> 
       <block wx:for-items="{{imgSrc}}" wx:key='index'>
         <image src='{{item}}'></image>
       </block>
     </view>
   </view>
-  <view class='goods-comment' wx:if='{{goodsCommen}}'>
+  <view class='goods-comment' wx:if='{{goodsCommen.length}}'>
     <view class='goods-title'>大家评价 <text class='red '>({{goodsCommen.length}})</text></view>
-    <view class='comment-info' wx:for='{{goodsCommen}}'>
+    <view class='comment-info' wx:for='{{goodsCommen}}' wx:key='index'>
       <view>
         <view class='comment-img'>
           <image src='{{item.user.avatarUrl}}'></image>
@@ -59,5 +59,57 @@
 
 
   </view>
-
+  <view class='foot-box'>
+    <view class='contact'>
+    <!--   
+      type 按钮的样式类型
+      session-from 会话来源
+    -->
+      <contact-button style="opacity:0;position:absolute; top:10rpx;" type="default-dark"  session-from="weapp" size="50"></contact-button>
+      <text>客服</text>
+    </view>
+    <view class='cart' bindtap='goToCart'>
+      
+      <view>(1)</view>
+      <text>购物车</text>
+    </view>
+    <view class='buy-cart' bindtap='toAddCar'>加入购物车</view>
+    <view class='buy-now' bindtap='toBuy'>立即购买</view>
+  </view>
+  <view class='show-select'  hidden='{{hiddenCurrent}}'>
+    <view class='mask' bindtap='toHidden'></view>
+    <view class='select-content'>
+      <view class='select-goods-info box-mode'>
+        <image src='{{goodsDetail.basicInfo.pic}}'></image>
+        <view class='select-title-info'>
+          <view class='title'>{{goodsDetail.basicInfo.name}}</view>
+          <text class='red'>￥{{goodsDetail.basicInfo.minPrice}}</text>
+        </view>
+        <view class='close' bindtap='toHidden'></view>
+      </view>
+      <view class='select-detail-box box-mode'>
+        <block wx:for="{{goodsDetail.properties}}" wx:for-item='property'  wx:for-index='itemIndex' wx:key='id'>
+          <view class='select-detail' bindtap='toSelect'>{{property.name}}</view>
+          <view  class='detail-item'>
+            <view class="{{item.active ? 'active' : '' }}" wx:for="{{property.childsCurGoods}}" wx:key="id" bindtap="toSelect" data-propertyname='{{property.name}}' data-propertyIndex="{{itemIndex}}" data-propertyChildIndex="{{index}}" data-propertyChildIds="{{item.id}}" data-propertyChildname='{{item.name}}'>{{item.name}}</view>
+          </view>
+        </block>
+      </view>
+      <view class='select-num-box box-mode'>
+        <view>购买数量</view>
+        <view class='select-button'>
+          <view class='minus {{buyNum == buyMin ? "gray" : "" }}' bindtap='minusNum'>-</view>
+          <view class='input'>
+            <input value='{{buyNum}}' disabled></input>
+          </view>
+          <view class='plus {{buyNum == buyMax ? "gray" : "" }}' bindtap='plusNum'>+</view>
+        </view>
+      </view>
+      <view class='show-join-btn'>
+        <view wx:if='{{shopType =="addCart"}}' bindtap='addCart'>加入购物车</view>
+        <view wx:if='{{shopType =="toBuy"}}' bindtap='buyNow'>立即购买</view>
+      </view>
+    </view>
+      
+  </view>
 </view>
