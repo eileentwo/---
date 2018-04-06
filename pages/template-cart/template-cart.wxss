@@ -118,6 +118,9 @@ page{
   width: 240rpx;
   text-align: center;
   color: #fff;
-  background-color: #e64340;
   margin-left: 30rpx;
+  background-color: #aaa;
+}
+.active{
+  background-color: #e64340;
 }

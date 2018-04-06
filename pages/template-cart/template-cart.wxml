@@ -7,11 +7,11 @@
  <template name='goods-list'>   
   <view class='cart-title flex'>
     <text>微商城</text>
-    <text class='gray' hidden='{{curHidden}}'>编辑</text>
-    <text class='gray' hidden='{{!curHidden}}'>完成</text>
+    <text class='gray'  wx:if='{{!curHidden}}' bindtap='edit'>编辑</text>
+    <text class='gray'  wx:if='{{curHidden}}' bindtap='save'>完成</text>
   </view>
   <view class='cart-goods'>
-    <view  wx:for="{{goodsList}}" wx:key='index'>
+    <view  wx:for="{{list}}" wx:key='index'>
       <view class="goods-item flex  {{item.active? 'checked':'checkBox'}}" bindtap='select' data-index='{{index}}'>
         <image src='{{item.pic}}'></image>
         <view class='goodsInfo'>
@@ -35,7 +35,8 @@
       <view>全选</view>
       <view>
         <text class='red'>合计：￥{{totalPrice}}</text>
-        <text class='submit'>去结算</text>
+        <text class="submit  {{noSelect? 'active':''}}" wx:if='{{!curHidden}}' bindtap='toPay'>去结算</text>
+        <text class="submit  {{noSelect? 'active':''}}"  wx:if='{{curHidden}}' bindtap='delete'>删除</text>
       </view>
     </view>
   </view>

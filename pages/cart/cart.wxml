@@ -2,7 +2,7 @@
 <import src="../template-cart/template-cart.wxml" />
 
 <view class='contanier'>
-  <template is="{{goodsList.length >0 ? 'goods-list':'no-goods'}}" data="{{...goodsList}}"></template>
+  <template  is="{{goodsList.list.length > 0 ? 'goods-list' : 'no-goods'}}" data="{{...goodsList}}"></template>
   <!-- <template is="{{goodsList.length >0 ? 'goods-list':'no-goods'}}" data="{{goodsList,totalPrice,allSelect}}"></template> -->
 </view>
 
