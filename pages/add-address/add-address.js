@@ -1,7 +1,6 @@
 // pages/add-address/add-address.js
 let commonCityData = require('../../utils/city.js')
-let app = getApp()
-
+let app = getApp() 
 Page({
   data: {
     provinces: [],
@@ -83,7 +82,6 @@ Page({
   },
   // 保存信息
   bindSave(e) {
-    // console.log(e)
     let linkMan = e.detail.value.linkMan
     let address = e.detail.value.address
     let mobile = e.detail.value.mobile

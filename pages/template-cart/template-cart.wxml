@@ -30,12 +30,12 @@
     </view>
   </view>
   <view class='footer'>
-    <view class="total flex {{allSelect? 'checked':'checkBox'}} " bindtap='bindAllSelect'>
+    <view class=' flex '>
     <!--{{allSelect? 'checked':'checkBox'}}  -->
-      <view>全选</view>
-      <view>
+      <view class="total {{allSelect? 'checked':'checkBox'}} " bindtap='bindAllSelect'>全选</view>
+      <view class='flex'>
         <text class='red'>合计：￥{{totalPrice}}</text>
-        <text class="submit  {{noSelect? 'active':''}}" wx:if='{{!curHidden}}' bindtap='toPay'>去结算</text>
+        <text class="submit  {{totalPrice? 'active':''}}" wx:if='{{!curHidden}}' bindtap='toPay'>去结算</text>
         <text class="submit  {{noSelect? 'active':''}}"  wx:if='{{curHidden}}' bindtap='delete'>删除</text>
       </view>
     </view>

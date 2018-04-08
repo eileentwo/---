@@ -5,18 +5,18 @@
       <view class='laber-box flex '>
         <view class='laber'>联系人</view>
         <view class='laber-input'>
-          <input placeholder='姓名' value='{{address.linkMan}}{{wxaddress.uername}}'></input>
+          <input name='linkMan' placeholder='姓名' value='{{address.linkMan}}{{wxaddress.uername}}'></input>
         </view>
       </view>
       <view class='laber-box flex'>
         <view class='laber'>手机号码</view>
         <view class='laber-input'>
-          <input placeholder='11位手机号码'   maxlength='11'></input>
+          <input name='mobile'  placeholder='11位手机号码'   maxlength='11'></input>
         </view>
       </view>
       <view class='laber-box flex'>
         <view class='laber'>选择地址</view>
-        <view class='laber-input flex'>
+        <view class='laber-input flex' >
           <picker bindchange='bindPickerProvinceChange' range='{{provinces}}'>
             <view class="{{selProvince=='请选择'?'gray':''}}">{{selProvince}}</view>
           </picker>
@@ -38,7 +38,7 @@
       <view class='laber-box flex'>
         <view class='laber'>邮政编码</view>
         <view class='laber-input'>
-          <input  value="{{addressData.code}}{{wxaddress.postalCode}}"></input>
+          <input  name='code' value="{{addressData.code}}{{wxaddress.postalCode}}"></input>
         </view>
       </view>
     </view>
